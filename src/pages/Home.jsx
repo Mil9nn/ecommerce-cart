@@ -31,7 +31,7 @@ const Home = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full">
           {[
             "/nataliya.webp",
             "/watch.webp",
@@ -63,7 +63,7 @@ const Home = () => {
       <div className="w-full max-w-6xl bg-purple-700 text-white p-8 rounded-lg shadow-lg mt-12 text-center">
         <h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
         <p className="mb-6">Get the latest updates on new products and special promotions</p>
-        <div className="flex max-w-md mx-auto">
+        <div className="flex flex-col gap-2 md:flex-row max-w-md mx-auto">
           <input 
             type="email" 
             placeholder="Your email address" 

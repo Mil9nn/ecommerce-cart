@@ -43,8 +43,12 @@ export const CartProvider = ({ children }) => {
     setCart(prevItems => prevItems.map(item => item.id === id && item.count > 1 ? { ...item, count: item.count - 1 } : item))
   }
 
+  const removeFromCart = (id) => {
+    setCart(prevItems => prevItems.filter(item => item.id !== id))
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, itemsInCart, products, setProducts,  handleIncrement, handleDecrement }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, itemsInCart, products, setProducts,  handleIncrement, handleDecrement }}>
       {children}
     </CartContext.Provider>
   )
