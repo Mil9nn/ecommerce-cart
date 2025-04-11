@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevValues) => [...prevValues, product]);
     toast.success('Item successfully added to the cart!', {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   const handleIncrement = (id) => {
-    setCart(prevItems => prevItems.map(item => item.id === id && item.count > 1 ? { ...item, count: item.count + 1 } : item))
+    setCart(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count + 1 } : item))
   }
 
   const handleDecrement = (id) => {

@@ -22,15 +22,13 @@ const Store = () => {
         <div>
             <ToastContainer
                 position="top-right"
-                autoClose={5000}
+                autoClose={1000}
                 hideProgressBar={false}
-                newestOnTop={false}
                 closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
                 pauseOnHover
-                theme="light"
+                draggable
+                theme="dark"
+                toastStyle={{ marginTop: '60px' }}
             />
             <h1>Products</h1>
             <div className="flex items-center justify-center gap-5 flex-wrap">
