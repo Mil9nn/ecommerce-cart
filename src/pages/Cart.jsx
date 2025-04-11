@@ -3,17 +3,16 @@ import { CartContext } from "../context/CartContext"
 
 const Cart = () => {
 
-  const { cart, addToCart, items, setItems, handleIncrement, handleDecrement } = useContext(CartContext);
+  const { cart, addToCart, handleIncrement, handleDecrement } = useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const handlePrice = () => {
-      const total = cart.reduce((sum, items) => sum + items.price, 0);
-      console.log(total);
+      const total = cart.reduce((sum, item) => sum + (item.price * item.count), 0); 
       setTotalPrice(total);
     }
     handlePrice();
-  }, [])
+  }, [cart])
 
 
   return (
@@ -60,7 +59,7 @@ const Cart = () => {
           <div className="pt-2 border-t">
             <div className="flex items-center justify-between py-3">
               <span className="text-gray-700 font-medium">Subtotal</span>
-              <span className="text-gray-900 font-bold text-lg">₹{totalPrice}</span>
+              <span className="text-gray-900 font-bold text-lg">₹{totalPrice.toFixed(2)}</span>
             </div>
           </div>
 

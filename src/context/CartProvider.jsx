@@ -36,11 +36,11 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   const handleIncrement = (id) => {
-    setCart(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count + 1 } : item))
+    setCart(prevItems => prevItems.map(item => item.id === id && item.count > 1 ? { ...item, count: item.count + 1 } : item))
   }
 
   const handleDecrement = (id) => {
-    setCart(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count - 1 } : item))
+    setCart(prevItems => prevItems.map(item => item.id === id && item.count > 1 ? { ...item, count: item.count - 1 } : item))
   }
 
   return (
