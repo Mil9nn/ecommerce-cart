@@ -3,7 +3,7 @@ import { CartContext } from "../context/CartContext"
 import { ToastContainer } from 'react-toastify';
 
 const Store = () => {
-    const { addToCart, products, setProducts, handleIncrement, handleDecrement } = useContext(CartContext);
+    const { addToCart, products, setProducts } = useContext(CartContext);
 
     useEffect(() => {
         const productData = async () => {
@@ -47,11 +47,6 @@ const Store = () => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <button onClick={() => { addToCart(product) }} className="rounded-full p-2 px-4 font-semibold hover:scale-[1.1] active:scale-[0.9] transition-all ease-in-out cursor-pointer">Add To Cart</button>
-                                    <div className="flex items-center gap-1 shadow-lg p-1">
-                                        <button onClick={() => { handleDecrement(product.id) }} className="cursor-pointer"><img src="/minus.svg" /></button>
-                                        <p className="w-7 text-center">{product.count}</p>
-                                        <button onClick={() => { handleIncrement(product.id) }} className="cursor-pointer" ><img src="/plus.svg" /></button>
-                                    </div>
                                 </div>
                             </div>
                         )

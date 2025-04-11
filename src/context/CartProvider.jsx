@@ -36,15 +36,15 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   const handleIncrement = (id) => {
-    setProducts(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count + 1 } : item))
+    setCart(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count + 1 } : item))
   }
 
   const handleDecrement = (id) => {
-    setProducts(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count - 1 } : item))
+    setCart(prevItems => prevItems.map(item => item.id === id ? { ...item, count: item.count - 1 } : item))
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, itemsInCart, products, handleIncrement, handleDecrement }}>
+    <CartContext.Provider value={{ cart, addToCart, itemsInCart, products, setProducts,  handleIncrement, handleDecrement }}>
       {children}
     </CartContext.Provider>
   )
