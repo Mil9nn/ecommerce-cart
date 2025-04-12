@@ -9,17 +9,22 @@ export const CartProvider = ({ children }) => {
   const itemsInCart = cart.length;
 
   const addToCart = (product) => {
-    setCart((prevValues) => [...prevValues, product]);
-    toast.success('Item successfully added to the cart!', {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    const itemExists = cart.some(item => item.id === product.id);
+    if (itemExists) {
+      alert("Looks like this item is already in your cart. You can update the quantity there.");
+    } else {
+      setCart((prevValues) => [...prevValues, product]);
+      toast.success('Item successfully added to the cart!', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   }
 
   useEffect(() => {
@@ -48,7 +53,7 @@ export const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, itemsInCart, products, setProducts,  handleIncrement, handleDecrement }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, itemsInCart, products, setProducts, handleIncrement, handleDecrement }}>
       {children}
     </CartContext.Provider>
   )
